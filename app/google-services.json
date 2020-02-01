@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "605436275214",
+    "firebase_url": "https://hackscfood.firebaseio.com",
+    "project_id": "hackscfood",
+    "storage_bucket": "hackscfood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605436275214:android:b28039675e760f1055aa5f",
+        "android_client_info": {
+          "package_name": "com.example.hacksc_food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605436275214-filj7704vdcpe64hh880midofchelrn8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hacksc_food",
+            "certificate_hash": "9b8da1d320af750b350b604b3e1e2c192cdb078d"
+          }
+        },
+        {
+          "client_id": "605436275214-10dsacq1k0fd5v0geovao3f28pocrrb8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfkdwxQakJd0zrjpF1qUI62sJGSxF2mhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605436275214-10dsacq1k0fd5v0geovao3f28pocrrb8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
