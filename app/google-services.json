@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "605436275214-vh08e6hjrvql2f5llgkg34r0tg8ctb5o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hacksc_food",
+            "certificate_hash": "5eb206506c3d736b4cc7346b4ce97d73a8604874"
+          }
+        },
+        {
           "client_id": "605436275214-filj7704vdcpe64hh880midofchelrn8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

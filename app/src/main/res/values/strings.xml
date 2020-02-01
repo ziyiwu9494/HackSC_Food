@@ -16,4 +16,7 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="find_meals">Find Meals</string>
+    <string name="my_meals">My Meals</string>
+    <string name="share_meals">Share Meals</string>
 </resources>
