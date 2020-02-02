@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user taps the Send button */
     public void toNav(View view) {
-        Intent intent = new Intent(this, nav_drawer.class);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 }
