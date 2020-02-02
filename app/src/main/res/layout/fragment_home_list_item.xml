@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/descText"
+        android:id="@+id/tagText"
         android:text="NewText"
         android:textSize="22sp"
         android:layout_weight="3"

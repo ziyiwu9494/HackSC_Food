@@ -4,25 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 //import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.hacksc_food.ListAdapter;
-import com.example.hacksc_food.Meal;
 import com.example.hacksc_food.R;
-import com.example.hacksc_food.sample_data;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class HomeFragment extends Fragment {
 
@@ -39,7 +29,15 @@ public class HomeFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.nav_recycle);
 
 
-        ListAdapter listAdapter = new ListAdapter(getActivity(), sample_data.titles, sample_data.tags);
+        ListAdapter listAdapter = new ListAdapter(
+                getActivity(),
+                sample_data.titles,
+                sample_data.tags,
+                sample_data.meal_descriptions,
+                sample_data.num_people,
+                sample_data.meal_times,
+                sample_data.meal_addresses
+        );
         recyclerView.setAdapter(listAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
