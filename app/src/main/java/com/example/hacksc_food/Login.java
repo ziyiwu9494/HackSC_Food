@@ -44,6 +44,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent auth = new Intent(getApplicationContext(), nav_drawer.class);
+            startActivity(auth);
+        }
     }
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
