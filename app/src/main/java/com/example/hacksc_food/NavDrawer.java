@@ -124,4 +124,8 @@ public class NavDrawer extends AppCompatActivity {
     public List<Meal> getFoodOptions(){
         return foodOptions;
     }
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 }
