@@ -30,4 +30,7 @@
     <string name="mealTags">meal tags</string>
     <string name="post_meal">Post Meal!</string>
     <string name="numOfPeople">number of people</string>
+    <string name="dinnerBell">DinnerBell</string>
+    <string name="meal_desc">meal description</string>
+    <string name="num_people">number to serve</string>
 </resources>

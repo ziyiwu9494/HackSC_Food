@@ -2,6 +2,7 @@ package com.example.hacksc_food;
 
 import android.os.Bundle;
 
+import com.example.hacksc_food.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
