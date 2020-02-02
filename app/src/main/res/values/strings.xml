@@ -37,5 +37,7 @@
     <string name="formatNumPeople">Feeding: %1$s</string>
     <string name="formatTime">Ready At: %1$s</string>
     <string name="formatLocation">Location: %1$s</string>
-
+    <string name="formatAttendees">Attendees: %1$s</string>
+    <string name="channel_name">test</string>
+    <string name="channel_description">test</string>
 </resources>

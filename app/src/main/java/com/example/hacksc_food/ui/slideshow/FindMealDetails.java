@@ -7,13 +7,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hacksc_food.AppData;
+import com.example.hacksc_food.Meal;
 import com.example.hacksc_food.R;
 
 public class FindMealDetails extends AppCompatActivity {
 
-    TextView mealName, mealTags, mealDescs,mealNumPeople, mealTime,mealAddress;
+    TextView mealName, mealTags, mealDescs,mealNumPeople, mealTime,mealAddress,mealAttendees;
     String data1,data2;
-    String title_data, tag_data, desc_data, num_people_data,time_data,address_data;
+    String title_data, tag_data, desc_data, num_people_data,time_data,address_data,key;
 
 
     @Override
@@ -27,6 +29,7 @@ public class FindMealDetails extends AppCompatActivity {
         mealNumPeople = findViewById(R.id.num_people);
         mealTime= findViewById(R.id.mealTime);
         mealAddress = findViewById(R.id.mealAddress);
+        mealAttendees = findViewById(R.id.attendees);
         findViewById(R.id.claim).setVisibility(View.INVISIBLE);
         getData();
         setData();
@@ -48,6 +51,19 @@ public class FindMealDetails extends AppCompatActivity {
             num_people_data = getIntent().getStringExtra("num_people_data");
             time_data= getIntent().getStringExtra("time_data");
             address_data= getIntent().getStringExtra("address_data");
+            String attendees = "";
+            key = getIntent().getStringExtra("key");
+            for(Meal m : ((AppData)(getApplication())).getAllMeals()){
+                if(m.getKey().equals(key)&&m.getAttendees()!=null){
+                    for(String k : m.getAttendees().values()){
+                        attendees += k + " ";
+                    }
+                }
+            }
+            if(attendees.equals("")){
+                attendees+= "None yet!";
+            }
+            mealAttendees.setText(getString(R.string.formatAttendees, attendees));
         } else {
             Toast.makeText(this,"No Data", Toast.LENGTH_SHORT).show();
         }

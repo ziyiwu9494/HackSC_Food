@@ -2,9 +2,11 @@ package com.example.hacksc_food;
 import android.location.Location;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Meal {
+    private String key;
     private String cookName;
     private String mealName;
     private String description;
@@ -12,6 +14,7 @@ public class Meal {
     private String location;
     private int numPeople;
     private List<String> tags;
+    private Map<String,String> attendees;
 
     public Meal(String mealName, String cookName, String description, String time, String location, int numPeople, List<String> tags) {
         this.cookName = cookName;
@@ -23,6 +26,20 @@ public class Meal {
         this.mealName = mealName;
     }
     public Meal(){
+    }
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+    public Map<String,String> getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(Map<String,String> attendees) {
+        this.attendees = attendees;
     }
 
     public String getCookName() {

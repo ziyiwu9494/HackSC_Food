@@ -57,6 +57,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
                 intent.putExtra("num_people_data", String.valueOf(currentMeal.getNumPeople()));
                 intent.putExtra("time_data", currentMeal.getTime());
                 intent.putExtra("address_data", currentMeal.getLocation());
+                intent.putExtra("key", currentMeal.getKey());
                 context.startActivity(intent);
             }
         });

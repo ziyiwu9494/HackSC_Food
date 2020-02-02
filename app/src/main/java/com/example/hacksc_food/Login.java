@@ -86,7 +86,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         if (TextUtils.isEmpty(email)) {
             mEmailField.setError("Required.");
             valid = false;
-        } else {
+        } else if(!email.endsWith("@usc.edu")){
+            mEmailField.setError("Must use your usc.edu email.");
+            valid = false;
+        }
+        else {
             mEmailField.setError(null);
         }
 

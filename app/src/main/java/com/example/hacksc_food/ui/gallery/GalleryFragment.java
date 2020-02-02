@@ -65,7 +65,7 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
         submitButton.setOnClickListener(this);
         return root;
     }
-    public Meal buildMeal(){
+    public Meal buildMeal(String key){
         String mealName = mealNameField.getText().toString();
         String description = descriptionField.getText().toString();
         String location = null;
@@ -81,11 +81,13 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
         List<String> tag = new ArrayList<String>();
         tag.add(tags);
         Meal thisMeal = new Meal(mealName,user.getDisplayName(),description,time,location,numPeople,tag);
+        thisMeal.setKey(key);
         return thisMeal;
     }
     public void onClick(View view) {
-        ref = db.getReference("meal"+user.getDisplayName() + Calendar.getInstance().getTime().toString());
-        ref.setValue(buildMeal()).addOnSuccessListener(new OnSuccessListener<Void>() {
+        String key = "meal"+user.getDisplayName() + Calendar.getInstance().getTime().toString();
+        ref = db.getReference(key);
+        ref.setValue(buildMeal(key)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(getActivity(), "Successfully Posted!",
