@@ -22,12 +22,12 @@
     <string name="my_meals">My Meals</string>
     <string name="share_meals">Share Meals</string>
     <string name="description">description</string>
-    <string name="share_your_meal">share your meal</string>
+    <string name="share_your_meal">Share Your Meal!</string>
     <string name="meal_name">meal name</string>
     <string name="meal_time">meal time</string>
     <string name="meeting_point">meeting point</string>
     <string name="tags" />
     <string name="mealTags">meal tags</string>
-    <string name="post_meal">post meal</string>
+    <string name="post_meal">Post Meal!</string>
     <string name="numOfPeople">number of people</string>
 </resources>
