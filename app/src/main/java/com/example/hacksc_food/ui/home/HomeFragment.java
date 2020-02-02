@@ -36,14 +36,7 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.nav_recycle);
-        homeViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
 
         ListAdapter listAdapter = new ListAdapter(getActivity(), sample_data.titles, sample_data.tags);
