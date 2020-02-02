@@ -10,84 +10,81 @@
         android:id="@+id/mealName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="120dp"
         android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/mealTime"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/mealTime"
-        app:layout_constraintTop_toBottomOf="@+id/mealTime" />
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/mealDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="249dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
         android:text="TextView"
-        android:textSize="24dp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/mealName"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/mealName"
         app:layout_constraintTop_toBottomOf="@+id/mealName" />
 
     <TextView
         android:id="@+id/num_people"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="153dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="20dp"
         android:text="TextView"
-        android:textSize="24dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/mealDesc"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/mealDesc"
         app:layout_constraintTop_toBottomOf="@+id/mealDesc" />
 
     <TextView
         android:id="@+id/mealTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="199dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:text="TextView"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/mealTags"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textSize="24dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/num_people"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/num_people"
         app:layout_constraintTop_toBottomOf="@+id/num_people" />
 
     <TextView
+        android:id="@+id/mealTags"
+        android:layout_width="263dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="13dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
         android:id="@+id/mealAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="201dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/mealTags"
-        app:layout_constraintStart_toStartOf="@+id/mealTags"
-        app:layout_constraintTop_toBottomOf="@+id/mealTags" />
+        app:layout_constraintEnd_toEndOf="@+id/mealTime"
+        app:layout_constraintStart_toStartOf="@+id/mealTime"
+        app:layout_constraintTop_toBottomOf="@+id/mealTime" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Button"
+        android:layout_marginTop="20dp"
+        android:text="claim meal"
         app:layout_constraintEnd_toEndOf="@+id/mealAddress"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="@+id/mealAddress"
         app:layout_constraintTop_toBottomOf="@+id/mealAddress" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
