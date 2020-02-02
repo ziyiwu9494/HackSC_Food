@@ -11,8 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+//import androidx.recyclerview.widget.ListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hacksc_food.ListAdapter;
+import com.example.hacksc_food.Meal;
 import com.example.hacksc_food.R;
+import com.example.hacksc_food.sample_data;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class HomeFragment extends Fragment {
 
@@ -20,16 +30,29 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
+        RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.nav_recycle);
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
+
+        ListAdapter listAdapter = new ListAdapter(getActivity(), sample_data.titles, sample_data.tags);
+        recyclerView.setAdapter(listAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity())
+        //recyclerView.setLayoutManager(layoutManager);
+
         return root;
     }
 }
