@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 //import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hacksc_food.Meal;
+import com.example.hacksc_food.NavDrawer;
 import com.example.hacksc_food.R;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -27,17 +30,7 @@ public class HomeFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.nav_recycle);
-
-
-        ListAdapter listAdapter = new ListAdapter(
-                getActivity(),
-                sample_data.titles,
-                sample_data.tags,
-                sample_data.meal_descriptions,
-                sample_data.num_people,
-                sample_data.meal_times,
-                sample_data.meal_addresses
-        );
+        ListAdapter listAdapter = new ListAdapter(((NavDrawer)getActivity()).getFoodOptions(), getActivity());
         recyclerView.setAdapter(listAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

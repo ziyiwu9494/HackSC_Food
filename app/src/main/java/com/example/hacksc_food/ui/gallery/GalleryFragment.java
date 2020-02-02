@@ -1,11 +1,7 @@
 package com.example.hacksc_food.ui.gallery;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,13 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.hacksc_food.Login;
-import com.example.hacksc_food.MainActivity;
 import com.example.hacksc_food.Meal;
 import com.example.hacksc_food.R;
-import com.example.hacksc_food.nav_drawer;
-import com.example.hacksc_food.ui.home.HomeFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.hacksc_food.NavDrawer;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,22 +23,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
+import java.util.Calendar;
 import java.util.List;
-import java.util.Set;
+
 
 public class GalleryFragment extends Fragment implements View.OnClickListener {
-
+    public static int uploads;
     private GalleryViewModel galleryViewModel;
-
-    String mealName;
-    String description;
-    Date time;
-    String location;
-    int numPeople;
-    List<String> tag = new ArrayList<String>();
-    Button submitButton;
+    private EditText mealNameField;
+    private EditText descriptionField;
+    private EditText timeField;
+    private EditText locationField;
+    private EditText tagField;
+    private EditText numPeopleField;
+    private Button submitButton;
     FirebaseUser user;
     DatabaseReference ref;
     FirebaseDatabase db;
@@ -63,42 +53,44 @@ public class GalleryFragment extends Fragment implements View.OnClickListener {
                 //textView.setText(s);
             }
         });*/
+        mealNameField = root.findViewById(R.id.mealNameInput);
+        descriptionField = root.findViewById(R.id.descriptionInput);
+        timeField = root.findViewById(R.id.timeInput);
+        locationField = root.findViewById(R.id.meetingPoint);
+        tagField = root.findViewById(R.id.tags);
+        numPeopleField = root.findViewById(R.id.numOfPeople);
         db = FirebaseDatabase.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         submitButton = root.findViewById(R.id.postMeal);
-        ref = db.getReference("meal");
         submitButton.setOnClickListener(this);
         return root;
     }
     public Meal buildMeal(){
-        mealName = getView().findViewById(R.id.mealNameInput).toString();
-        Log.d("mealName", getView().findViewById(R.id.mealNameInput).toString());
-        description = getView().findViewById(R.id.descriptionInput).toString();
-        location = getView().findViewById(R.id.meetingPoint).toString();
+        String mealName = mealNameField.getText().toString();
+        String description = descriptionField.getText().toString();
+        String location = null;
+        location = locationField.getText().toString();
+        int numPeople = 0;
         try {
-            numPeople = Integer.parseInt(getView().findViewById(R.id.numOfPeople).toString());
+            numPeople = Integer.parseInt(numPeopleField.getText().toString());
         } catch (Exception e){
             Log.d("IntParseException", e.getMessage());
         }
-        String str = getView().findViewById(R.id.timeInput).toString();
-        DateFormat formatter = new SimpleDateFormat("hh:mm a");
-        try{
-            time = formatter.parse(str);
-        } catch (Exception e){
-            Log.d("Parse Exception", e.getMessage());
-        }
-        String tags = getView().findViewById(R.id.tags).toString();
+        String time = timeField.getText().toString();
+        String tags = tagField.getText().toString();
+        List<String> tag = new ArrayList<String>();
         tag.add(tags);
-        Meal thisMeal = new Meal(user.getDisplayName(),mealName,description,time,location,numPeople,tag);
+        Meal thisMeal = new Meal(mealName,user.getDisplayName(),description,time,location,numPeople,tag);
         return thisMeal;
     }
     public void onClick(View view) {
+        ref = db.getReference("meal"+user.getDisplayName() + Calendar.getInstance().getTime().toString());
         ref.setValue(buildMeal()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Toast.makeText(getActivity(), "Successfully Posted!",
                         Toast.LENGTH_SHORT).show();
-                Intent goToHome = new Intent(getActivity(), nav_drawer.class);
+                Intent goToHome = new Intent(getActivity(), NavDrawer.class);
                 startActivity(goToHome);
             }
         });

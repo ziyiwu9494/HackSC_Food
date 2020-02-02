@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.home.find_meal_details"
-            android:parentActivityName=".nav_drawer"
+            android:parentActivityName=".NavDrawer"
             />
 
 
         <activity android:name=".CreateAccount" />
         <activity android:name=".Login" />
         <activity
-            android:name=".nav_drawer"
+            android:name=".NavDrawer"
             android:label="@string/title_activity_nav_drawer"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

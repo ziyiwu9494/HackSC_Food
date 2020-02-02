@@ -1,6 +1,6 @@
 package com.example.hacksc_food;
+import android.location.Location;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -8,12 +8,12 @@ public class Meal {
     private String cookName;
     private String mealName;
     private String description;
-    private Date time;
+    private String time;
     private String location;
     private int numPeople;
     private List<String> tags;
 
-    public Meal(String mealName, String cookName, String description, Date time, String location, int numPeople, List<String> tags) {
+    public Meal(String mealName, String cookName, String description, String time, String location, int numPeople, List<String> tags) {
         this.cookName = cookName;
         this.description = description;
         this.time = time;
@@ -21,6 +21,8 @@ public class Meal {
         this.numPeople = numPeople;
         this.tags = tags;
         this.mealName = mealName;
+    }
+    public Meal(){
     }
 
     public String getCookName() {
@@ -47,11 +49,11 @@ public class Meal {
         this.description = description;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

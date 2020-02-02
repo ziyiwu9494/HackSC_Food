@@ -41,7 +41,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent auth = new Intent(getApplicationContext(), nav_drawer.class);
+            Intent auth = new Intent(getApplicationContext(), NavDrawer.class);
             startActivity(auth);
         }
     }
@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(Login.this, "Authentication Successful",
                                     Toast.LENGTH_SHORT).show();
-                            Intent auth = new Intent(getApplicationContext(), nav_drawer.class);
+                            Intent auth = new Intent(getApplicationContext(), NavDrawer.class);
                             startActivity(auth);
                         } else {
                             // If sign in fails, display a message to the user.

@@ -3,6 +3,7 @@ package com.example.hacksc_food.ui.home;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -11,21 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hacksc_food.Meal;
 import com.example.hacksc_food.R;
+
+import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
 
-    String title_data[], tag_data[], desc_data[], num_people_data[],time_data[],address_data[];
+    List<Meal> foodOptions;
     Context context;
 
-    public ListAdapter(Context ct, String s1[], String s2[], String s3[], String s4[], String s5[], String s6[]){
-        context = ct;
-        title_data = s1;
-        tag_data = s2;
-        desc_data = s3;
-        num_people_data= s4;
-        time_data= s5;
-        address_data = s6;
+    public ListAdapter(List<Meal> foodOptions, Context context){
+        this.foodOptions = foodOptions;
+        this.context = context;
     }
 
     @NonNull
@@ -38,18 +37,23 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        holder.myText1.setText(title_data[position]);
-        holder.myText2.setText(tag_data[position]);
+        final Meal currentMeal = foodOptions.get(position);
+        holder.mealTitle.setText(currentMeal.getMealName());
+        final String tags = "";
+        if(currentMeal.getTags() != null){
+            tags.concat(currentMeal.getTags().get(0));
+            holder.tag.setText(tags);
+        }
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,find_meal_details.class);
-                intent.putExtra("title_data", title_data[position]);
-                intent.putExtra("tag_data", tag_data[position]);
-                intent.putExtra("desc_data", desc_data[position]);
-                intent.putExtra("num_people_data", num_people_data[position]);
-                intent.putExtra("time_data", time_data[position]);
-                intent.putExtra("address_data", address_data[position]);
+                intent.putExtra("title_data", currentMeal.getMealName());
+                intent.putExtra("tag_data", tags);
+                intent.putExtra("desc_data", currentMeal.getDescription());
+                intent.putExtra("num_people_data", currentMeal.getNumPeople());
+                intent.putExtra("time_data", currentMeal.getTime());
+                intent.putExtra("address_data", currentMeal.getLocation());
                 context.startActivity(intent);
             }
         });
@@ -57,17 +61,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return title_data.length;
+        return foodOptions.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView myText1, myText2;
-
+        TextView mealTitle, tag;
         ConstraintLayout mainLayout;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-            myText1 = itemView.findViewById(R.id.titleText);
-            myText2 = itemView.findViewById(R.id.tagText);
+            mealTitle = itemView.findViewById(R.id.titleText);
+            tag = itemView.findViewById(R.id.tagText);
             mainLayout = itemView.findViewById(R.id.my_row_layout);
         }
     }
