@@ -24,6 +24,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,11 +54,12 @@ public class NavDrawer extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private DatabaseReference mMenuReference;
     private ValueEventListener mMenuListener;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        user = FirebaseAuth.getInstance().getCurrentUser();
         mMenuReference = FirebaseDatabase.getInstance().getReference();
         setContentView(R.layout.activity_nav_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -112,7 +115,7 @@ public class NavDrawer extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String names = "";
                 Meal changed = dataSnapshot.getValue(Meal.class);
-                if(changed.getAttendees()!= null){
+                if(changed.getAttendees()!= null && changed.getCookName().equals(user.getDisplayName())){
                     for(String name : changed.getAttendees().values()){
                         names += name + " ";
                     }

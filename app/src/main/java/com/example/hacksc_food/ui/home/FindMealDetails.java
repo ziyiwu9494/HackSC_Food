@@ -82,7 +82,7 @@ public class FindMealDetails extends AppCompatActivity implements View.OnClickLi
         for(Meal m : ((AppData)(getApplication())).getAllMeals()){
             if(m.getKey().equals(key)&&m.getAttendees()!=null){
                 for(String k : m.getAttendees().values()){
-                    attendees += k + " ";
+                    attendees += k + "; ";
                 }
             }
         }
