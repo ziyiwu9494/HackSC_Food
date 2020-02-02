@@ -14,7 +14,12 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hacksc_food.AppData;
+import com.example.hacksc_food.Meal;
 import com.example.hacksc_food.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SlideshowFragment extends Fragment {
 
@@ -27,15 +32,13 @@ public class SlideshowFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
 
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.nav_recycle);
-        ListAdapter listAdapter = new ListAdapter(
-                getActivity(),
-                sample_data.titles,
-                sample_data.tags,
-                sample_data.meal_descriptions,
-                sample_data.num_people,
-                sample_data.meal_times,
-                sample_data.meal_addresses
-        );
+        List<Meal> claimedMeals = new ArrayList<Meal>();
+        for(Meal m : ((AppData)(getActivity().getApplication())).getAllMeals()){
+            if(((AppData)(getActivity().getApplication())).getClaimedMeals().contains(m.getMealName())){
+                claimedMeals.add(m);
+            }
+        }
+        ListAdapter listAdapter = new ListAdapter(claimedMeals,getActivity());
         recyclerView.setAdapter(listAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

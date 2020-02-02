@@ -1,18 +1,24 @@
-package com.example.hacksc_food.ui.slideshow;
+package com.example.hacksc_food.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hacksc_food.AppData;
+import com.example.hacksc_food.CreateAccount;
 import com.example.hacksc_food.R;
 
-public class find_meal_details extends AppCompatActivity {
+public class FindMealDetails extends AppCompatActivity implements View.OnClickListener {
 
     TextView mealName, mealTags, mealDescs,mealNumPeople, mealTime,mealAddress;
     String data1,data2;
     String title_data, tag_data, desc_data, num_people_data,time_data,address_data;
+
 
 
     @Override
@@ -26,7 +32,7 @@ public class find_meal_details extends AppCompatActivity {
         mealNumPeople = findViewById(R.id.num_people);
         mealTime= findViewById(R.id.mealTime);
         mealAddress = findViewById(R.id.mealAddress);
-
+        findViewById(R.id.claim).setOnClickListener(this);
         getData();
         setData();
     }
@@ -48,16 +54,25 @@ public class find_meal_details extends AppCompatActivity {
             time_data= getIntent().getStringExtra("time_data");
             address_data= getIntent().getStringExtra("address_data");
         } else {
-            Toast.makeText(this,"No Data", Toast.LENGTH_SHORT);
+            Toast.makeText(this,"No Data", Toast.LENGTH_SHORT).show();
         }
     }
     private void setData(){
         mealName.setText(title_data);
-        mealTags.setText(tag_data);
+        mealTags.setText(getString(R.string.formatTags, tag_data));
         mealDescs.setText(desc_data);
-        mealNumPeople.setText(num_people_data);
-        mealTime.setText(time_data);
-        mealAddress.setText(address_data);
+        mealNumPeople.setText(getString(R.string.formatNumPeople, num_people_data));
+        mealTime.setText(getString(R.string.formatTime,time_data));
+        mealAddress.setText(getString(R.string.formatLocation,address_data));
 
+    }
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.claim) {
+            findViewById(R.id.claim).setVisibility(View.INVISIBLE);
+            ((AppData)this.getApplication()).getClaimedMeals().add(title_data);
+            Toast.makeText(this,"Claimed!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

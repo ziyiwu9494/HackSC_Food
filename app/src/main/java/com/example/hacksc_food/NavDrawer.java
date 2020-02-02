@@ -38,7 +38,6 @@ public class NavDrawer extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private DatabaseReference mMenuReference;
     private ValueEventListener mMenuListener;
-    private List<Meal> foodOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +66,7 @@ public class NavDrawer extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        foodOptions = new ArrayList<Meal>();
+
 
     }
 
@@ -86,18 +85,22 @@ public class NavDrawer extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
         ValueEventListener menuListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ((AppData)getApplication()).getAllMeals().clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     Meal getMeal = ds.getValue(Meal.class);
-                    foodOptions.add(getMeal);
+                    ((AppData)getApplication()).getAllMeals().add(getMeal);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Getting Post failed, log a message
@@ -110,6 +113,7 @@ public class NavDrawer extends AppCompatActivity {
         };
         mMenuReference.addValueEventListener(menuListener);
         mMenuListener = menuListener;
+
     }
     @Override
     public void onStop() {
@@ -120,12 +124,5 @@ public class NavDrawer extends AppCompatActivity {
             mMenuReference.removeEventListener(mMenuListener);
         }
 
-    }
-    public List<Meal> getFoodOptions(){
-        return foodOptions;
-    }
-
-    public void setActionBarTitle(String title) {
-        getSupportActionBar().setTitle(title);
     }
 }

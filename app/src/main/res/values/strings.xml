@@ -33,4 +33,9 @@
     <string name="dinnerBell">DinnerBell</string>
     <string name="meal_desc">meal description</string>
     <string name="num_people">number to serve</string>
+    <string name="formatTags">Tags: %1$s</string>
+    <string name="formatNumPeople">Feeding: %1$s</string>
+    <string name="formatTime">Ready At: %1$s</string>
+    <string name="formatLocation">Location: %1$s</string>
+
 </resources>

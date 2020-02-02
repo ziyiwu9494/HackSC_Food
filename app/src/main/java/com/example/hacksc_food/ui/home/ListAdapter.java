@@ -3,7 +3,6 @@ package com.example.hacksc_food.ui.home;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -39,19 +38,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         final Meal currentMeal = foodOptions.get(position);
         holder.mealTitle.setText(currentMeal.getMealName());
-        final String tags = "";
+        String tags = "";
         if(currentMeal.getTags() != null){
-            tags.concat(currentMeal.getTags().get(0));
+            for(String tag : currentMeal.getTags()){
+                tags = tags + tag;
+            }
             holder.tag.setText(tags);
         }
+        final String passTags = tags;
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,find_meal_details.class);
+                Intent intent = new Intent(context, FindMealDetails.class);
                 intent.putExtra("title_data", currentMeal.getMealName());
-                intent.putExtra("tag_data", tags);
+                intent.putExtra("tag_data", passTags);
                 intent.putExtra("desc_data", currentMeal.getDescription());
-                intent.putExtra("num_people_data", currentMeal.getNumPeople());
+                intent.putExtra("num_people_data", String.valueOf(currentMeal.getNumPeople()));
                 intent.putExtra("time_data", currentMeal.getTime());
                 intent.putExtra("address_data", currentMeal.getLocation());
                 context.startActivity(intent);

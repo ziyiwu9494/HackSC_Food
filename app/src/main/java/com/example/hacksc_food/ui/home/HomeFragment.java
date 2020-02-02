@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 //import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hacksc_food.AppData;
 import com.example.hacksc_food.Meal;
 import com.example.hacksc_food.NavDrawer;
 import com.example.hacksc_food.R;
@@ -30,7 +31,7 @@ public class HomeFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.nav_recycle);
-        ListAdapter listAdapter = new ListAdapter(((NavDrawer)getActivity()).getFoodOptions(), getActivity());
+        ListAdapter listAdapter = new ListAdapter(((AppData)(getActivity().getApplication())).getAllMeals(), getActivity());
         recyclerView.setAdapter(listAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
