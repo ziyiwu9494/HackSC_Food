@@ -1,4 +1,4 @@
-package com.example.hacksc_food.ui.home;
+package com.example.hacksc_food.ui.slideshow;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -53,10 +53,10 @@ public class find_meal_details extends AppCompatActivity {
     }
     private void setData(){
         mealName.setText(title_data);
-        mealTags.setText("tags: " + tag_data);
+        mealTags.setText(tag_data);
         mealDescs.setText(desc_data);
-        mealNumPeople.setText("feeds " + num_people_data);
-        mealTime.setText("ready at: " + time_data);
+        mealNumPeople.setText(num_people_data);
+        mealTime.setText(time_data);
         mealAddress.setText(address_data);
 
     }

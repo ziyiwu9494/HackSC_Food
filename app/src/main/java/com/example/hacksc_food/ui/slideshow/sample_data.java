@@ -1,4 +1,4 @@
-package com.example.hacksc_food.ui.home;
+package com.example.hacksc_food.ui.slideshow;
 
 public class sample_data {
     public static String[] titles = new  String[]{
@@ -16,7 +16,7 @@ public class sample_data {
     };
 
     public static String[] tags = new String[]{
-            "#italian #gluten-free #free-ranged #vegitarian",
+            "#mamamia",
             "#JustinTimberlake",
             "#mlh2020",
             "#nosleep",
@@ -57,7 +57,7 @@ public class sample_data {
     };
 
     public static String[] meal_addresses = new String[]{
-            "1377 Hilda Ave, Glendale, CA 91205",
+            "some address",
             "some address",
             "some address",
             "some address",
@@ -70,7 +70,7 @@ public class sample_data {
             "some address"
     };
     public static String[] meal_descriptions = new String[]{
-            "Quick, Easy and Delicious-Homemade pizza crust and tomato sauce has never been easier-and this recipe for pepperoni pizza produces a delicious classic!",
+            "some description",
             "some description",
             "some description",
             "some description",
