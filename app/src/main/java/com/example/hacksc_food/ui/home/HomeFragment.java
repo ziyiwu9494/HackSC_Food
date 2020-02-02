@@ -21,7 +21,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-
+        getActivity().setTitle("Team B");
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
 
@@ -46,4 +46,11 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+    /*public void onResume(){
+        super.onResume();
+
+        // Set title bar
+         getActivity().setActionBarTitle("Your title");
+
+    }*/
 }
